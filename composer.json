@@ -1,0 +1,20 @@
+{
+    "name": "technodrive/core",
+    "description": "Technodrive MVC Skeleton",
+    "license": "MIT",
+    "require": {
+        "php": "~8.2.0",
+        "Technodrive\\Module\\": "src"
+    },
+    "autoload": {
+        "psr-4": {
+            "Technodrive\\Core\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    }
+}
