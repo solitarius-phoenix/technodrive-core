@@ -19,6 +19,7 @@ class Configurator
         'factories',
         'aliases',
         'routes',
+        'template_path_stack',
     ];
 
     /**

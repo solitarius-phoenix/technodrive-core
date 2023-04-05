@@ -72,6 +72,7 @@ class Application
         $process
             ->setCurrentStep(StepEnum::bootstrap)
             ->setRequest($this->serviceManager->get(Request::class))
+            ->setResponse($this->serviceManager->get(Response::class))
             //->setRouter($this->serviceManager->get(Router::class))
         ;
         $this->processManager->triggerStep($process);
@@ -83,11 +84,28 @@ class Application
      */
     public function run()
     {
+        //routing
         $this->process
             ->setCurrentStep(StepEnum::route)
         ;
         $this->processManager->triggerStep($this->process);
-        echo 'running';
+        //dispatching
+        $this->process
+            ->setCurrentStep(StepEnum::dispatch)
+        ;
+        $this->processManager->triggerStep($this->process);
+        //view rendering
+        $this->process
+            ->setCurrentStep(StepEnum::view_render);
+        ;
+        $this->processManager->triggerStep($this->process);
+
+        $this->process
+            ->setCurrentStep(StepEnum::layout_render);
+        ;
+        $this->processManager->triggerStep($this->process);
+
+        echo $this->process->getResponse()->getBody();
     }
 
     /**
