@@ -16,13 +16,17 @@ use Technodrive\Module\Module;
 use \Technodrive\Module\Listener\LoadModulesListener;
 use \Technodrive\Module\Factory\LoadModulesListenerFactory;
 use \Technodrive\Core\Application;
+use Technodrive\Mvc\Factory\LayoutRendererFactory;
 use Technodrive\Mvc\Factory\ViewRendererFactory;
+use Technodrive\Mvc\LayoutRenderer;
 use Technodrive\Mvc\Listener\Factory\LayoutRendererListenerFactory;
 use Technodrive\Mvc\Listener\Factory\ViewRendererListenerFactory;
 use Technodrive\Mvc\Listener\LayoutRendererListener;
 use Technodrive\Mvc\Listener\ViewRendererListener;
 use Technodrive\Mvc\View_helpers\Factory\HeadTitleHelperFactory;
+use Technodrive\Mvc\View_helpers\Factory\TestHelperFactory;
 use Technodrive\Mvc\View_helpers\HeadtitleHelper;
+use Technodrive\Mvc\View_helpers\TestHelper;
 use Technodrive\Mvc\ViewRenderer;
 use Technodrive\Router\Listener\Factory\RouterListenerFactory;
 use Technodrive\Router\Factory\RouterFactory;
@@ -39,6 +43,7 @@ return [
         Router::class => RouterFactory::class,
         Dispatcher::class => DispatcherFactory::class,
         ViewRenderer::class => ViewRendererFactory::class,
+        LayoutRenderer::class => LayoutRendererFactory::class,
     ],
     'listeners' => [
         'listen' => [
@@ -69,9 +74,7 @@ return [
     'views_helpers' => [
         'factories' => [
             'headTitle' => HeadTitleHelperFactory::class,
+            'testHelper' => TestHelperFactory::class,
         ],
-        'aliases' => [
-
-        ]
     ]
 ];
